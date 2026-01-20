@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_input_field.dart';
-import '../widgets/custom_button.dart';
+import '../../widgets/shared/custom_input_field.dart';
+import '../../widgets/shared/custom_button.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({super.key});

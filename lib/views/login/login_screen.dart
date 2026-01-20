@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_input_field.dart';
-import '../widgets/custom_button.dart';
-import 'signup_screen.dart';
-import 'home_screen.dart';
+import '../../widgets/shared/custom_input_field.dart';
+import '../../widgets/shared/custom_button.dart';
+import '../../routes/app_routes.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -113,11 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   text: 'Sign In',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // Navigate to home - will be replaced with auth later
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()),
-                      );
+                      Navigator.pushReplacementNamed(context, AppRoutes.home);
                     }
                   },
                 ),
@@ -135,10 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const SignupScreen()),
-                        );
+                        Navigator.pushNamed(context, AppRoutes.signup);
                       },
                       child: const Text(
                         'Sign Up',

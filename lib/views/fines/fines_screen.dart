@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/status_tag.dart';
+import '../../widgets/shared/status_tag.dart';
 
 class FinesScreen extends StatefulWidget {
   const FinesScreen({super.key});

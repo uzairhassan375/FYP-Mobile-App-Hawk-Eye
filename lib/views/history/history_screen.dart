@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/status_tag.dart';
+import '../../widgets/shared/status_tag.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -253,7 +253,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           if (points != null) ...[
             const SizedBox(width: 8),
             Text(
-              points,
+              points!,
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
+import 'routes/app_routes.dart';
 
 void main() {
   runApp(const DisciplineMonitorApp());
@@ -84,7 +84,8 @@ class DisciplineMonitorApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      initialRoute: AppRoutes.login,
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
 }

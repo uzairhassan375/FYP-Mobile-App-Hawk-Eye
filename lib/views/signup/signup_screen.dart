@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_input_field.dart';
-import '../widgets/custom_button.dart';
+import '../../widgets/shared/custom_input_field.dart';
+import '../../widgets/shared/custom_button.dart';
+import '../../routes/app_routes.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -214,10 +215,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   text: 'Sign Up',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // Handle signup - will be connected to backend later
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Signup successful!')),
                       );
+                      Navigator.pushReplacementNamed(context, AppRoutes.home);
                     }
                   },
                 ),

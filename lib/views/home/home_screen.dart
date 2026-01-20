@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_nav_bar.dart';
-import '../widgets/stat_card.dart';
-import 'report_screen.dart';
-import 'alerts_screen.dart';
-import 'rewards_screen.dart';
-import 'history_screen.dart';
-import 'fines_screen.dart';
+import '../../widgets/shared/bottom_nav_bar.dart';
+import '../../widgets/shared/stat_card.dart';
+import '../../routes/app_routes.dart';
+import 'widgets/home_card.dart';
+import '../report/report_screen.dart';
+import '../alerts/alerts_screen.dart';
+import '../rewards/rewards_screen.dart';
+import '../history/history_screen.dart';
+import '../fines/fines_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -94,11 +96,7 @@ class HomeContent extends StatelessWidget {
                     IconButton(
                       icon: const Icon(Icons.account_circle, color: Colors.white, size: 32),
                       onPressed: () {
-                        // Navigate to profile/fines
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const FinesScreen()),
-                        );
+                        Navigator.pushNamed(context, AppRoutes.fines);
                       },
                     ),
                   ],
@@ -160,10 +158,7 @@ class HomeContent extends StatelessWidget {
                     height: 56,
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ReportScreen()),
-                        );
+                        Navigator.pushNamed(context, AppRoutes.report);
                       },
                       icon: const Icon(Icons.warning, color: Colors.white),
                       label: const Text(
@@ -198,7 +193,7 @@ class HomeContent extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          // Navigate to history
+                          Navigator.pushNamed(context, AppRoutes.history);
                         },
                         child: const Text(
                           'View All',
@@ -212,7 +207,7 @@ class HomeContent extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   // Activity List
-                  _buildActivityItem(
+                  HomeCard(
                     icon: Icons.check_circle,
                     iconColor: const Color(0xFF4CAF50),
                     title: 'Littering report approved',
@@ -220,14 +215,14 @@ class HomeContent extends StatelessWidget {
                     points: '+15',
                   ),
                   const SizedBox(height: 12),
-                  _buildActivityItem(
+                  HomeCard(
                     icon: Icons.pending,
                     iconColor: const Color(0xFFFF9800),
                     title: 'Noise violation submitted',
                     time: '5 hours ago',
                   ),
                   const SizedBox(height: 12),
-                  _buildActivityItem(
+                  HomeCard(
                     icon: Icons.card_giftcard,
                     iconColor: const Color(0xFFFF9800),
                     title: 'Bonus points earned!',
@@ -238,75 +233,6 @@ class HomeContent extends StatelessWidget {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildActivityItem({
-    required IconData icon,
-    required Color iconColor,
-    required String title,
-    required String time,
-    String? points,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, color: iconColor, size: 20),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF333333),
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  time,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Color(0xFF999999),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          if (points != null)
-            Text(
-              points,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF4CAF50),
-              ),
-            ),
         ],
       ),
     );
